@@ -14,8 +14,18 @@ class EmployedAdmin(admin.ModelAdmin):
         'first_name',
         'last_name',
         'job',
-        'department'
+        'department',
+        'full_name',
     )
+    # Adicionar columna que no existe en el model
+
+    def full_name(self, employ):
+        return employ.first_name + ' ' + employ.last_name
+
+    search_fields = ('first_name', 'last_name')
+    list_filter = ('job', 'department', 'skill')
+    # buscador solo para many to many
+    filter_horizontal = ('skill',)
 
 
 admin.site.register(Employed, EmployedAdmin)
@@ -26,5 +36,7 @@ class SkillAdmin(admin.ModelAdmin):
         'id',
         'name'
     )
+    search_fields = ('name',)
+
 
 admin.site.register(Skill, SkillAdmin)
