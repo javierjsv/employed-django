@@ -33,7 +33,7 @@ class Employed(models.Model):
     job = models.CharField('Trabajos', max_length=1, choices=JOB_CHOICES)
     # one to many
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    #image = models.ImageField(upload_to='avatar', blank=True , null = True)
+    image = models.ImageField(upload_to='avatar', blank=True , null = True)
     #python -m pip install Pillow
     #many to many
     skill = models.ManyToManyField(Skill)
