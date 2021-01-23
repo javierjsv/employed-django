@@ -5,6 +5,8 @@ from django.db import models
 
 from applications.department.models import Department
 
+from ckeditor.fields import RichTextField
+
 # Create your models here.
 
 
@@ -35,6 +37,8 @@ class Employed(models.Model):
     #python -m pip install Pillow
     #many to many
     skill = models.ManyToManyField(Skill)
+    #usando app de terceros
+    curriculum = RichTextField()
 
     class Meta:
         ordering = ['id']
