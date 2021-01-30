@@ -38,7 +38,7 @@ class Employed(models.Model):
     #many to many
     skill = models.ManyToManyField(Skill)
     #usando app de terceros
-    curriculum = RichTextField()
+    curriculum = RichTextField(blank=True, null = True)
 
     class Meta:
         ordering = ['id']

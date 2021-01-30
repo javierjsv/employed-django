@@ -9,7 +9,7 @@ from django.db import models
 class Department(models.Model):
     name = models.CharField('Nombre', max_length=50)
     short_name = models.CharField('Nombre corto', max_length=20)
-    active = models.BooleanField('Activo', default=False, unique=True)
+    active = models.BooleanField('Activo', default=False,)
 
     class Meta:
         #verbose_name = 'My department'
