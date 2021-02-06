@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from django.views.generic import (TemplateView, ListView, CreateView)
+from django.views.generic import (
+    TemplateView, ListView, CreateView, DetailView)
 # Create your views here.
 
 
@@ -23,11 +24,11 @@ class AllListEmployed(ListView):
     paginate_by = 2
     model = Employed
     ordering = 'first_name'
+
     def get_paginate_by(self, queryset):
         number_page = self.request.GET.get('page', '')
         print('number', number_page)
         return self.paginate_by
-
 
 
 # listar todos los empleados que pertencen a un area de la empresa
@@ -64,8 +65,14 @@ class listEmployedByKeywod(ListView):
 class listSkillEmployed(ListView):
     template_name = 'employed/listSkillEmployed.html'
     context_object_name = 'employes'
-    #by id user
+    # by id user
+
     def get_queryset(self):
-        result_employed  = Employed.objects.get(id= 2)
+        result_employed = Employed.objects.get(id=2)
         print(result_employed.skill.all())
         return result_employed.skill.all()
+
+
+class EmployedDetailView(DetailView):
+     model = Employed
+     template_name = "employed/detail_employed.html"
