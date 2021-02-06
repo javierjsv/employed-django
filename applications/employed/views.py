@@ -76,3 +76,8 @@ class listSkillEmployed(ListView):
 class EmployedDetailView(DetailView):
      model = Employed
      template_name = "employed/detail_employed.html"
+     def get_context_data(self, **kwargs):
+        context = super(EmployedDetailView , self).get_context_data(**kwargs)
+        context['title'] = 'employee of month'  
+        print(context)
+        return context
